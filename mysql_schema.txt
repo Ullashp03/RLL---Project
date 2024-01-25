@@ -1,0 +1,99 @@
+								Insurance Policy Management
+MySQL Schema
+
+Database name :- Insurance2
+		
++------------------------+
+| Tables_in_rllproject   |
++------------------------+
+| admin                  |
+| Customer               |
+| customer_apply_policies|
+| policy                 |
+| public_question        |
+| questions_customer     |
++------------------------+
+
+
+mysql> SELECT * FROM insurance2.admin;
++----------+------------------+--------------+-----------+-------------------+-------------+-----------+----------------+------------+--------------------+         
+| adminid  |  admin_join_date |	adminaddress |	adminage |  adminemail	     | admingender | adminname |  adminpassword	| adminphno  |	seniormangeremail |
++----------+------------------+--------------+-----------+-------------------+-------------+-----------+----------------+------------+--------------------+                                       
+|    1	   |     2024/01/19   |	   hnk	     |     22	 |  admin@gmail.com  | 	  male	   |   Admin   |   Admin@1234	| 9874561231 |	admin1@gmail.com  |
+|    8	   | 2024/01/24 22:31 |	 Bengaluru   | 	   24	 |  Ullas@gmail.com  | 	  MALE	   |   Ullas   |   Ullas@1234	| 8310005358 |	admin@gmail.com   |
+|   15	   |   19/07/2023     |	   Delhi     | 	   23	 | admin5@gmail.com  |	 female	   |  admin5   |   Admin5@123	| 8873457789 |	senior5@gmail.com | 
+|   23	   |   19/07/2023     |	   Delhi     |	   23	 | admin5@gmail.com  |	 female	   |  admin5   |   Admin5@123	| 8873457789 |	senior5@gmail.com |
+|   61	   | 2024/01/25 11:12 |	    abc	     |     24	 |  Amar@gmail.com   |	  MALE	   |   AMAR    |   Amar@1234	| 9876543210 |	admin@gmail.com   |
+|   73	   |   19/07/2023     |	   Delhi     |	   23	 | admin5@gmail.com  |	 female	   |  admin5   |   Admin5@123	| 8873457789 |	senior5@gmail.com |
++----------+------------------+--------------+-----------+-------------------+-------------+-----------+----------------+------------+--------------------+				
+
+
+mysql> SELECT * FROM insurance2.customer;
++-----+------------+--------+--------------------+-----------+----------------+----------------+--------------+
+|cid  |	caddress   |  cage  |  cemail            |  cgender  |      cname     |   cpassword    |  cphno       |
++-----+------------+--------+--------------------+-----------+----------------+----------------+--------------+
+| 1   |  Bengaluru |	23  |  Preethi@gmail.com |   Female  |      Preethi   |   Preethi@1234 |  7829397062  |
+| 16  |   India    |    24  |  sachin@gmail      |   male    |      Sachin    |   Sachin@1234  |  8806456321  |         
+| 18  |  Bengaluru |    23  |  Amar@gmail.com    |   MALE    |      Amar      |   Amar@1234    |  1234567890  |
+| 30  |   India    |    24  |  Pavan@gmail.com   |   male    |      Pavan     |   Pavan@1234   |  8806456321  |
+|  62 |    123     |    23  |  ABC@gmail.com     |   MALE    |      ABC       |   Abc@1234     |  9876543210  |
++-----+------------+--------+--------------------+-----------+----------------+----------------+--------------+
+
+
+mysql> SELECT * FROM insurance2.customer_apply_policies;
++--------- +-----------------------+------------------+--------------------+-----------------+---------------+---------------------+------------------+
+|  appid   |     customeremail	   |   customername   | policy_catagory	   |  policy_name    |  policy_price |	policyapplydate    |	status	      |
++--------- +-----------------------+------------------+--------------------+-----------------+---------------+---------------------+------------------+
+|	3  |	Preethi@gmail.com  |	 Preethi      |	Life Insurance	   |  BAJAJ123	     |    3 lac	     |	2024/01/24 22:28   |	Approved      |	
+|	14 |	Vishnu1@gmail.com  |	 Vishnu	      |	Health	Heart      |	BAJAJ        |   700000	     |	26/01/200          |	Disapproved   |
+|	54 |	Preethi@gmail.com  |	 Preethi      |	Life Insurance     |	Health       |    5 lac	     |	2024/01/25 09:23   |	Approved      |
+|	63 |	ABC@gmail.com      |	 ABC          |	Vehicle Insurance  |	 BAJAJ       |    3 lac	     |	2024/01/25 11:21   |	Rejected      |
+|	66 |	ABC@gmail.com      |	 ABC          |	 Travel Insurance  |  Policy Bazaar  |    5 lac	     |	2024/01/25 11:34   |	Approved      |
+|	68 |	ABC@gmail.com      |	 ABC          |	 Life Insurance    |	 Heart       |    10 lac     |	2024/01/25 11:41   |	Rejected      |
+|	72 |	Vishnu1@gmail.com  |	 Vishnu	      |	 Health	Heart      |	 LIC         |    700000     |	26/01/200          |	Disapproved   |
++----------+-----------------------+------------------+--------------------+---------------+-----------------+---------------------+------------------+
+
+
+mysql> SELECT * FROM insurance2.policy;
++-------+-------------------+-----------------+----------------------+
+| pid   | add_date_of_policy |  policycatagory   |  policyname       |        
++-------+-------------------+-----------------+----------------------+
+|  4	| 2024/01/24 22:29   | Travel Insurance  |  BAJAJ            |
+|  5	| 2024/01/24 22:29   | Vehicle Insurance |  Acko             |
+|  6	| 2024/01/24 22:29   | Health Insurance  |  Jeevan Yodha     |
+|  7	| 2024/01/24 22:29   | Life Insurance    |  Policy Bazaar    |
+|  13	| 26/04/2000         | Health            |National Health dup|
+|  35   | 26/04/2000         | Lic               |  Health           |
+|  37   | 26/04/2000         | Lic               |  Health           |
+|  53   | 2024/01/25 09:22   | Vehicle Insurance |  Bajaj1           |
+|  59   | 2024/01/25 11:06   | Vehicle Insurance |                   |
+|  67   | 2024/01/25 11:40   | Life Insurance    |  Health           |
+|  71   | 26/04/2000         | Lic               |  Health           |
+|  74   | 26/04/2000         | Lic               |  Health           |
++-------+--------------------+-------------------+-------------------+
+
+
+mysql> SELECT * FROM insurance2.public_question;
++--------+---------------------------------------------------------+--------------------------+----------------------+
+|usmsid  |                sms                                      |ucustomername             | usmsemail            |
++--------+---------------------------------------------------------+--------------------------+----------------------+
+| 10	 | What is the policy suitable for 18?	                   | Arpitha	              |  arpitha@gmail.com   |
+| 12	 | What are the documents required  for LIC Policy	   | Sripathi	              | sripathi@gmail.com   |  |
+| 56	 | wertyuk		                                   | Arpitha                  |arpitha@gmail.com     |
+| 70	 | What are the documents required  for LIC Policy	   | Sripathi	              |sripathi@gmail.com    |
++--------+---------------------------------------------------------+--------------------------+----------------------+
+
+
+mysql> SELECT * FROM insurance2.questions_customer;
++-----+------------------+-------------------+---------+------------------+--------------------------------------------+---------+
+| qid |    answerdate    |   customeremail   | qanswer |    qdate         |                 qdetails                   |  qtopic |
++-----+------------------+-------------------+---------+------------------+--------------------------------------------+---------+
+|  9  |	20/01/2024	 | Preethi@gmail.com | 3 Years | 2024/01/24 22:32 | What is the age required to open a policy? |   Hii   |
+| 11  |	20/01/2024	 | admin1@gmail.com  | 3 Years | 2024/01/24 22:35 |       What is Tenure for LIC Policy??      | Policy  |
+| 19  |	2024/01/25 11:10 | admin1@gmail.com  |	1234   | 2024/01/24 23:32 |       What is Tenure for LIC Policy??      | Policy  |
+| 25  |		         | admin1@gmail.com  |	       | 2024/01/24 23:35 |       What is Tenure for LIC Policy??      | Policy  |
+| 55  |	2024/01/25 09:25 | Preethi@gmail.com |	 rt    | 2024/01/25 09:25 |                 Helloo	               |   Hii   |
+| 64  |	2024/01/25 11:24 |   ABC@gmail.com   | nothing | 2024/01/25 11:24 |                 Helloo ssup?	       |   Hii   |
+| 65  |	2024/01/25 11:29 |   ABC@gmail.com   |	 abc   | 2024/01/25 11:28 |                  dfg	               |   Hii   |
+| 69  |		         | admin1@gmail.com  |	       | 2024/01/25 11:48 |        What is Tenure for LIC Policy??     |  Policy |
++-----+------------------+-------------------+---------+------------------+--------------------------------------------+---------+
